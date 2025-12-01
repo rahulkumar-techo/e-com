@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "target": "es2019",
+    "composite": true,         // REQUIRED for tsc -b
+    "declaration": true,       // generate .d.ts
+    "declarationMap": true,
+    "moduleResolution": "nodenext",
+    "emitDeclarationOnly": false
+  },
+  "include": ["./**/*.ts"]
+}

@@ -1,0 +1,62 @@
+2025-11-30 19:26:19 [info] : Connected to Redis
+2025-11-30 20:00:09 [info] : Connected to Redis
+2025-11-30 20:01:28 [info] : Connected to Redis
+2025-11-30 20:01:47 [info] : Connected to Redis
+2025-11-30 20:03:32 [info] : Connected to Redis
+2025-11-30 20:04:02 [error] : MongoDB connection error:
+MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
+2025-11-30 20:05:35 [info] : Connected to Redis
+2025-11-30 20:05:36 [info] : Connected to MongoDB
+2025-11-30 20:06:18 [info] : Connected to Redis
+2025-11-30 20:06:19 [info] : Connected to MongoDB
+2025-12-01 06:48:19 [info] : Connected to Redis
+2025-12-01 06:48:21 [info] : Connected to MongoDB
+2025-12-01 07:00:00 [info] : ⏳ Deleted unverified users older than 15 minutes:cron
+2025-12-01 07:07:40 [error] : Redis connection error:
+ Error: read ECONNRESET
+2025-12-01 07:07:42 [info] : Connected to Redis
+2025-12-01 07:15:00 [info] : ⏳ Deleted unverified users older than 15 minutes:cron
+2025-12-01 07:25:05 [error] : Redis connection error:
+ Error: read ECONNRESET
+2025-12-01 07:25:05 [error] : Redis connection error:
+ Error: getaddrinfo ENOTFOUND together-basilisk-31307.upstash.io
+2025-12-01 07:25:05 [error] : Redis connection error:
+ Error: getaddrinfo ENOTFOUND together-basilisk-31307.upstash.io
+2025-12-01 07:25:05 [error] : Redis connection error:
+ Error: getaddrinfo ENOTFOUND together-basilisk-31307.upstash.io
+2025-12-01 07:25:06 [error] : Redis connection error:
+ Error: getaddrinfo ENOTFOUND together-basilisk-31307.upstash.io
+2025-12-01 07:25:06 [error] : Redis connection error:
+ Error: getaddrinfo ENOTFOUND together-basilisk-31307.upstash.io
+2025-12-01 07:25:06 [error] : Redis connection error:
+ Error: getaddrinfo ENOTFOUND together-basilisk-31307.upstash.io
+2025-12-01 07:25:06 [error] : Redis connection error:
+ Error: getaddrinfo ENOTFOUND together-basilisk-31307.upstash.io
+2025-12-01 07:25:07 [error] : Redis connection error:
+ Error: getaddrinfo ENOTFOUND together-basilisk-31307.upstash.io
+2025-12-01 07:25:07 [error] : Redis connection error:
+ Error: getaddrinfo ENOTFOUND together-basilisk-31307.upstash.io
+2025-12-01 07:25:08 [error] : Redis connection error:
+ Error: getaddrinfo ENOTFOUND together-basilisk-31307.upstash.io
+2025-12-01 07:25:08 [error] : Redis connection error:
+ Error: getaddrinfo ENOTFOUND together-basilisk-31307.upstash.io
+2025-12-01 07:29:35 [error] : Redis connection error:
+ Error: getaddrinfo ENOTFOUND together-basilisk-31307.upstash.io
+2025-12-01 07:29:39 [info] : Connected to Redis
+2025-12-01 07:30:01 [info] : ⏳ Deleted unverified users older than 15 minutes:cron
+2025-12-01 17:55:26 [info] : Connected to Redis
+2025-12-01 17:55:27 [info] : Connected to MongoDB
+2025-12-01 18:06:34 [info] : Connected to Redis
+2025-12-01 18:06:36 [info] : Connected to MongoDB
+2025-12-01 18:13:10 [info] : Connected to Redis
+2025-12-01 18:13:11 [info] : Connected to MongoDB
+2025-12-01 18:18:34 [info] : Connected to Redis
+2025-12-01 18:18:35 [info] : Connected to MongoDB
+2025-12-01 18:27:02 [info] : Connected to Redis
+2025-12-01 18:27:03 [info] : Connected to MongoDB
+2025-12-01 18:31:30 [info] : Connected to Redis
+2025-12-01 18:31:31 [info] : Connected to MongoDB
+2025-12-01 18:35:29 [info] : Connected to Redis
+2025-12-01 18:35:30 [info] : Connected to MongoDB
+2025-12-01 18:45:11 [info] : Connected to Redis
+2025-12-01 18:45:12 [info] : Connected to MongoDB

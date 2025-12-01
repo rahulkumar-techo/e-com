@@ -1,4 +1,8 @@
 packages:
-  - "apps/*"
-
+  - 'apps/*'
+  - 'packages'
+  - 'logger'
 autoInstallPeers: true
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - 'core-js-pure'

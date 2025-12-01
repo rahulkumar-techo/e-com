@@ -1,5 +1,11 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "useInferencePlugins": false,
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": false
+    }
+  },
   "defaultBase": "master",
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
@@ -42,7 +48,11 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": ["apps/e-commerce-e2e/**/*"]
+      "exclude": [
+        "apps/e-commerce-e2e/**/*",
+        "apps/api-gateway-e2e/**/*",
+        "apps/auth-service-e2e/**/*"
+      ]
     },
     {
       "plugin": "@nx/docker",
@@ -53,6 +63,17 @@
         "runTarget": {
           "name": "docker:run"
         }
+      }
+    },
+    {
+      "plugin": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps",
+        "serveStaticTargetName": "serve-static"
       }
     }
   ],
@@ -65,5 +86,9 @@
     "test": {
       "dependsOn": ["^build"]
     }
+  },
+  "workspaceLayout": {
+    "libsDir": "packages",
+    "appsDir": "apps"
   }
 }

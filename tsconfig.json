@@ -4,10 +4,19 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/e-commerce-e2e"
+      "path": "./apps/api-gateway-e2e"
     },
     {
-      "path": "./apps/e-commerce"
-    }
+      "path": "./apps/api-gateway"
+    },
+    {
+      "path": "./apps/auth-service-e2e"
+    },
+    {
+      "path": "./apps/auth-service"
+    },
+    {
+      "path": "./packages"
+    },
   ]
 }
