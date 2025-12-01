@@ -44,7 +44,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "email-verification",
 					"id": "29442200-662a948d-7c99-4a63-bc46-1c2c6e5665a9",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
