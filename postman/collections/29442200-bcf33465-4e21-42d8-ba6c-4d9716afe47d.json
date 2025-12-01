@@ -56,13 +56,13 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "forgot password",
 					"id": "29442200-66668437-fcdc-4993-88f2-c45e7b3d345e",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": []
 					},
 					"response": []
