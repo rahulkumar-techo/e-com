@@ -7,38 +7,44 @@
 	},
 	"item": [
 		{
-			"name": "Auth",
-			"id": "29442200-2e0d7d65-3ec9-4700-91c6-602c82e8c9ca",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"rahulkumar7250883289@gmail.com\",\r\n    \"password\": \"rahul@9142\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "New Folder",
+			"item": [
+				{
+					"name": "Auth",
+					"id": "29442200-2e0d7d65-3ec9-4700-91c6-602c82e8c9ca",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"rahulkumar@gmail.com\",\r\n    \"password\": \"rahul@9142\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5001/api/auth/register",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"api",
-						"auth",
-						"register"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"id": "29442200-96cc2dc5-add8-48b0-a4b3-0b06d47af811"
 		}
 	]
 }
