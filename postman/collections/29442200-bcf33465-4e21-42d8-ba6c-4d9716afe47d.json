@@ -10,7 +10,7 @@
 			"name": "Auth",
 			"item": [
 				{
-					"name": "Auth",
+					"name": "register",
 					"id": "29442200-2e0d7d65-3ec9-4700-91c6-602c82e8c9ca",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
