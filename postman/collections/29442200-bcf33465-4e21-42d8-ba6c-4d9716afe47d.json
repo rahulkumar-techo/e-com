@@ -80,7 +80,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "logout",
 					"id": "29442200-b2c23e6a-ce2e-468e-bf0a-2b2f6c01163c",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
