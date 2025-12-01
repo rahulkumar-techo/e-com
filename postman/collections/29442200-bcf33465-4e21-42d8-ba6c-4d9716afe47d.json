@@ -17,7 +17,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \r\n}",
+					"raw": "{\r\n    \"email\": \"rahulkumar7250883289@gmail.com\",\r\n    \"password\": \"rahul@9142\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
