@@ -68,8 +68,20 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "login",
 					"id": "29442200-390b5717-a34a-49bc-83ac-cd30743bf7db",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "29442200-b2c23e6a-ce2e-468e-bf0a-2b2f6c01163c",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
