@@ -5,5 +5,18 @@
 		"description": "# 🛒 **E-Commerce System: Full Overview**\n\nAn **e-commerce platform** is a system where users can browse products, add them to cart, place orders, make payments, and track deliveries.\n\nOn the backend, it connects together multiple services like product catalog, user accounts, orders, payments, delivery, reviews, etc.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
-	"item": []
+	"item": [
+		{
+			"name": "New Request",
+			"id": "29442200-2e0d7d65-3ec9-4700-91c6-602c82e8c9ca",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
 }
