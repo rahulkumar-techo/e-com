@@ -1,0 +1,9 @@
+{
+	"info": {
+		"_postman_id": "29442200-bcf33465-4e21-42d8-ba6c-4d9716afe47d",
+		"name": "E-com",
+		"description": "# 🛒 **E-Commerce System: Full Overview**\n\nAn **e-commerce platform** is a system where users can browse products, add them to cart, place orders, make payments, and track deliveries.\n\nOn the backend, it connects together multiple services like product catalog, user accounts, orders, payments, delivery, reviews, etc.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": []
+}
