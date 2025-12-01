@@ -44,7 +44,8 @@
 					"response": []
 				}
 			],
-			"id": "29442200-96cc2dc5-add8-48b0-a4b3-0b06d47af811"
+			"id": "29442200-96cc2dc5-add8-48b0-a4b3-0b06d47af811",
+			"description": "Authentication process"
 		}
 	]
 }
