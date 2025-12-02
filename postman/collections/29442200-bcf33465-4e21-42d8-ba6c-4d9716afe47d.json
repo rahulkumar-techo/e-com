@@ -138,7 +138,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"rahulkumar@gmail.com\",\r\n    \"otp\": \"663082\"\r\n}",
+							"raw": "{\r\n    \"email\": \"rahulkumar@gmail.com\",\r\n    \"otp\": \"222734\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -246,7 +246,8 @@
 								"auth",
 								"me"
 							]
-						}
+						},
+						"description": "# Get Authenticated User Profile\n\n## Overview\nThis endpoint retrieves the profile information of the currently authenticated user. Use this to fetch details about the logged-in user's account.\n\n## Authentication\n**Required:** Yes\n\nThis endpoint requires a valid authentication token. The token must be included in the request headers (typically as a Bearer token in the Authorization header).\n\n## Request\n- **Method:** GET\n- **URL:** `http://localhost:5001/api/auth/me`\n- **Headers:** Authentication token required\n\n## Response Format\n\n### Success Response (200 OK)\n```json\n{\n  \"status\": \"success\",\n  \"message\": \"User fetched\",\n  \"data\": {\n    \"id\": \"string\",\n    \"email\": \"string\",\n    \"avatar\": \"string | null\",\n    \"isVerified\": \"boolean\",\n    \"createdAt\": \"string (ISO 8601 date)\",\n    \"updatedAt\": \"string (ISO 8601 date)\"\n  }\n}\n```\n\n**Response Fields:**\n- `id` - Unique identifier for the user\n- `email` - User's email address\n- `avatar` - URL to user's avatar image (null if not set)\n- `isVerified` - Boolean indicating if the user's email is verified\n- `createdAt` - Timestamp when the user account was created\n- `updatedAt` - Timestamp when the user account was last updated\n\n### Example Success Response\n```json\n{\n  \"status\": \"success\",\n  \"message\": \"User fetched\",\n  \"data\": {\n    \"id\": \"692e81db53237c8364d06636\",\n    \"email\": \"rahulkumar@gmail.com\",\n    \"avatar\": null,\n    \"isVerified\": true,\n    \"createdAt\": \"2025-12-02T06:06:19.464Z\",\n    \"updatedAt\": \"2025-12-02T06:06:39.150Z\"\n  }\n}\n```\n\n## Error Responses\n\n### 401 Unauthorized\nReturned when the authentication token is missing, invalid, or expired.\n\n```json\n{\n  \"status\": \"error\",\n  \"message\": \"Unauthorized - Invalid or missing authentication token\"\n}\n```\n\n**Common causes:**\n- No authentication token provided\n- Token has expired\n- Token is invalid or malformed\n- User session has been terminated"
 					},
 					"response": []
 				}
