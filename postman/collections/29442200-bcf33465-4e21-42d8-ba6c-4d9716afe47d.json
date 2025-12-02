@@ -574,7 +574,12 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"rahulkumar@gmail.com\"\r\n}"
+							"raw": "{\r\n    \"email\":\"rahulkumar@gmail.com\",\r\n    \"otp\":\"\",\r\n    \"password\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "http://localhost:5001/api/auth/reset-password",
