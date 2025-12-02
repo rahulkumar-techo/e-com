@@ -577,7 +577,7 @@
 							"raw": "{\r\n    \"email\":\"rahulkumar@gmail.com\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:5001/api/auth/reset-passwo",
+							"raw": "http://localhost:5001/api/auth/reset-password",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -586,7 +586,7 @@
 							"path": [
 								"api",
 								"auth",
-								"reset-passwo"
+								"reset-password"
 							]
 						}
 					},
