@@ -138,7 +138,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"rahulkumar@gmail.com\",\r\n    \"otp\": \"151011\"\r\n}",
+							"raw": "{\r\n    \"email\": \"rahulkumar@gmail.com\",\r\n    \"otp\": \"475271\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -204,7 +204,8 @@
 								"auth",
 								"login"
 							]
-						}
+						},
+						"description": "# Login Endpoint\n\n## Overview\nThis endpoint authenticates users by validating their credentials and returns an access token upon successful login. Use this endpoint to obtain authentication tokens required for accessing protected resources in the API.\n\n## Request Details\n\n**Endpoint:** `POST http://localhost:5001/api/auth/login`\n\n**Method:** `POST`\n\n**Content-Type:** `application/json`\n\n### Request Body Parameters\n\n| Parameter | Type | Required | Description |\n|-----------|------|----------|-------------|\n| `email` | string | Yes | The user's registered email address |\n| `password` | string | Yes | The user's account password |\n\n**Example Request Body:**\n```json\n{\n  \"email\": \"rahulkumar@gmail.com\",\n  \"password\": \"rahul@9142\"\n}\n```\n\n## Response Information\n\n### Success Response (200 OK)\n\n**Response Structure:**\n```json\n{\n  \"status\": \"success\",\n  \"message\": \"Login successful\",\n  \"data\": {\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...\",\n    \"device\": \"Unknown Device\"\n  }\n}\n```\n\n**Response Fields:**\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `status` | string | Indicates the status of the request (success/error) |\n| `message` | string | Human-readable message describing the result |\n| `data.accessToken` | string | JWT access token to be used for authenticated requests |\n| `data.device` | string | Information about the device used for login |\n\n## Usage Notes\n\n- Store the `accessToken` securely after successful login\n- Include the access token in the `Authorization` header for subsequent authenticated requests\n- The token format is typically: `Bearer {accessToken}`\n- Ensure credentials are transmitted over HTTPS in production environments\n- Invalid credentials will result in an error response"
 					},
 					"response": []
 				},
