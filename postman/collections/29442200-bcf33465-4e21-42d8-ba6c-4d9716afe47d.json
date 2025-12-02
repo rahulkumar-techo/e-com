@@ -74,7 +74,8 @@
 								"auth",
 								"verify-email"
 							]
-						}
+						},
+						"description": "# Email Verification Endpoint\n\n## Overview\nThis endpoint verifies a user's email address using a One-Time Password (OTP) that was previously sent to their email. This is typically used as part of the user registration or email confirmation process.\n\n## Request Details\n- **Method:** `POST`\n- **Endpoint:** `/api/auth/verify-email`\n- **Content-Type:** `application/json`\n\n## Request Body Parameters\n\n| Parameter | Type | Required | Description |\n|-----------|------|----------|-------------|\n| `email` | string | Yes | The email address to be verified. Must match the email that received the OTP. |\n| `otp` | string | Yes | The One-Time Password sent to the user's email. This is typically a 6-digit numeric code. |\n\n### Example Request Body\n```json\n{\n  \"email\": \"rahulkumar@gmail.com\",\n  \"otp\": \"002262\"\n}\n```\n\n## Response Format\n\n### Success Response (200 OK)\n```json\n{\n  \"status\": \"success\",\n  \"message\": \"Email verified successfully\",\n  \"data\": {}\n}\n```\n\n**Response Fields:**\n- `status`: Indicates the outcome of the request (\"success\" or \"error\")\n- `message`: Human-readable message describing the result\n- `data`: Additional data (may be empty on successful verification)\n\n## Notes\n- The OTP is typically time-sensitive and expires after a certain period (commonly 5-15 minutes)\n- Each OTP can usually only be used once\n- After successful verification, the user's email status is updated in the system\n- Invalid or expired OTPs will result in an error response\n- Ensure the email parameter matches exactly with the email that received the OTP"
 					},
 					"response": []
 				},
