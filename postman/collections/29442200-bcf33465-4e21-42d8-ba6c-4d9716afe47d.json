@@ -173,7 +173,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"\"\r\n}",
+							"raw": "{\r\n    \"email\":\"rahulkumar@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
