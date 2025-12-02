@@ -119,8 +119,13 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "c6af9d1a-be6c-4978-b1f2-ab1280344a1b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
 								"packages": {},
-								"type": "text/javascript"
+								"requests": {}
 							}
 						}
 					],
@@ -133,7 +138,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"rahulkumar@gmail.com\",\r\n    \"otp\": \"002262\"\r\n}",
+							"raw": "{\r\n    \"email\": \"rahulkumar@gmail.com\",\r\n    \"otp\": \"151011\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
