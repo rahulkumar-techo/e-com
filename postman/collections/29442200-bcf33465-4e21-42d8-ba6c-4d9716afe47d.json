@@ -239,7 +239,24 @@
 					},
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"rahulkumar@gmail.com\",\r\n    \"otp\":\"562373\",\r\n    \"password\":\"rahulkumar\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/auth/log",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"log"
+							]
+						}
 					},
 					"response": []
 				},
