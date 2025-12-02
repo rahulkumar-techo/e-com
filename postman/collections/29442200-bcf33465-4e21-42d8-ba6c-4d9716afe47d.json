@@ -574,7 +574,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"rahulkumar@gmail.com\",\r\n    \"otp\":\"\",\r\n    \"password\":\"\"\r\n}",
+							"raw": "{\r\n    \"email\":\"rahulkumar@gmail.com\",\r\n    \"otp\":\"432121\",\r\n    \"password\":\"rahulkumar\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
