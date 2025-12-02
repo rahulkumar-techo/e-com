@@ -570,8 +570,25 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"rahulkumar@gmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/auth/reset-passwo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"reset-passwo"
+							]
+						}
 					},
 					"response": []
 				}
