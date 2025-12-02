@@ -169,7 +169,7 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -179,6 +179,19 @@
 									"language": "json"
 								}
 							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/auth/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								""
+							]
 						}
 					},
 					"response": []
