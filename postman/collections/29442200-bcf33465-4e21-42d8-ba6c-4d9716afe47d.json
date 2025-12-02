@@ -564,7 +564,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "Reset passowrd",
 					"id": "29442200-528276f4-c92b-4000-8722-bb18c1f3dfb2",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
