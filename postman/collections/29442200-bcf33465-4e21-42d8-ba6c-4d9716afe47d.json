@@ -39,7 +39,8 @@
 								"auth",
 								"register"
 							]
-						}
+						},
+						"description": "# User Registration\n\n## Overview\nThis endpoint allows new users to register an account in the system. It accepts user credentials (email and password) and creates a new user account if the email is not already registered.\n\n## Endpoint Details\n- **Method:** `POST`\n- **URL:** `http://localhost:5001/api/auth/register`\n- **Content-Type:** `application/json`\n\n## Request Body Schema\n\nThe request body must be a JSON object with the following fields:\n\n| Field | Type | Required | Description |\n|-------|------|----------|-------------|\n| `email` | string | Yes | User's email address (must be valid email format) |\n| `password` | string | Yes | User's password for account authentication |\n\n### Example Request Body\n```json\n{\n  \"email\": \"rahulkumar@gmail.com\",\n  \"password\": \"rahul@9142\"\n}\n```\n\n## Response Codes\n\n| Status Code | Status | Description |\n|-------------|--------|-------------|\n| 200 | Success | User account created successfully |\n| 201 | Created | User account created successfully |\n| 400 | Bad Request | Invalid request body or missing required fields |\n| 409 | Conflict | User with this email already exists |\n| 500 | Internal Server Error | Server error during registration process |\n\n## Example Responses\n\n### Success Response (200/201)\n```json\n{\n  \"status\": \"success\",\n  \"message\": \"User registered successfully\"\n}\n```\n\n### Error Response - User Already Exists (409)\n```json\n{\n  \"status\": \"fail\",\n  \"message\": \"User already exists\"\n}\n```\n\n### Error Response - Bad Request (400)\n```json\n{\n  \"status\": \"fail\",\n  \"message\": \"Invalid email or password format\"\n}\n```\n\n## Notes\n- Ensure the email is in a valid format before sending the request\n- Password requirements may vary based on server-side validation rules\n- If you receive a 409 status code, the email is already registered in the system"
 					},
 					"response": []
 				},
@@ -54,7 +55,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"rahulkumar@gmail.com\",\r\n    \"otp\": \"002262 \"\r\n}",
+							"raw": "{\r\n    \"email\": \"rahulkumar@gmail.com\",\r\n    \"otp\": \"002262\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
