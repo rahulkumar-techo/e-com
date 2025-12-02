@@ -181,7 +181,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5001/api/auth/",
+							"raw": "http://localhost:5001/api/auth/forgot-password",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -190,7 +190,7 @@
 							"path": [
 								"api",
 								"auth",
-								""
+								"forgot-password"
 							]
 						}
 					},
