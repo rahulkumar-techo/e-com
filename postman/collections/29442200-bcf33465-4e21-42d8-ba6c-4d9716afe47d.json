@@ -119,8 +119,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6146f09e-b075-456a-9fe6-eb96a8af484a",
-								"exec": [],
+								"packages": {},
 								"type": "text/javascript"
 							}
 						}
