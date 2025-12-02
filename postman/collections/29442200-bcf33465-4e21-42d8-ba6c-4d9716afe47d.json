@@ -245,7 +245,7 @@
 							"raw": "{\r\n    \"email\":\"rahulkumar@gmail.com\",\r\n    \"otp\":\"562373\",\r\n    \"password\":\"rahulkumar\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:5001/api/auth/log",
+							"raw": "http://localhost:5001/api/auth/logout",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -254,7 +254,7 @@
 							"path": [
 								"api",
 								"auth",
-								"log"
+								"logout"
 							]
 						}
 					},
