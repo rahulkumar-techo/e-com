@@ -52,6 +52,10 @@ export class ResponseHandler {
     });
   }
 
+   static error(res:Response, status:number, message:string, error = {}) {
+    return res.status(status).json({ success: false, message, error });
+  }
+
   static serverError(res: Response, message = "Internal Server Error") {
     return res.status(500).json({
       status: "error",

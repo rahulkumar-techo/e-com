@@ -5,7 +5,10 @@ export interface IUser extends Document {
   isVerified?: boolean;
   tokenVerification?: string;
   avatar?: string;
-  expiresAt?: Date; // for TTL deletion
+  isBlocked: boolean;
+  expiresAt?: Date; 
+  createdAt:Date;
+  updatedAt:Date;
 }
 
 const UserSchema = new Schema<IUser>(
@@ -37,7 +40,10 @@ const UserSchema = new Schema<IUser>(
       type: String,
       default: null,
     },
-
+    isBlocked: {
+      type: Boolean,
+      default: false
+    },
     expiresAt: {
       type: Date,
       default: () => new Date(Date.now() + 15 * 60 * 1000), // set expiry time on creation
@@ -49,8 +55,9 @@ const UserSchema = new Schema<IUser>(
 
 UserSchema.methods.markAsVerified = async function () {
   this.isVerified = true;
-  this.expiresAt = undefined; // remove TTL
-  await this.save();
+
+  await this.updateOne({ $unset: { expiresAt: 1 }, $set: { isVerified: true } });
 };
+
 
 export const User = mongoose.model<IUser>("User", UserSchema);

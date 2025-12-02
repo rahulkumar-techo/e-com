@@ -1,99 +1,143 @@
-/* AuthService: Handles business logic and DB operations */
+/* AuthService: Handles authentication business logic */
 
+import bcrypt from "bcryptjs";
+import sendMail from "../utils/sendMail";
 import { redisClient } from "../lib/redis";
 import { generateOTP } from "../utils/gen-otp";
-import sendMail from "../utils/sendMail";
-import { LoginInput, RegisterInput } from "../validations/auth.validations";
-import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/gen-token";
-import { userRepository } from "../repo/user.repo";
 
-class AuthService {
+import { RegisterInput } from "../validations/auth.validations";
+import { userRepository } from "../repo/user.repo";
+import { Request, Response } from "express";
+import { ResponseHandler } from "../../../../packages/utils";
+
+export class AuthService {
 
     /* REGISTER */
-    async registerUser({ email, password }: RegisterInput) {
-        if (!email || !password) throw new Error("Email and password are required");
+    async registerUser(
+        { email, password }: RegisterInput,
+        req: Request,
+        res: Response
+    ) {
+        // validate
+        if (!email || !password)
+            return ResponseHandler.badRequest(res, "Email and password required");
 
-        const exists = await userRepository.findByEmail(email);
-        if (exists) throw new Error("User already exists");
+        // exists check
+        const existingUser = await userRepository.findByEmail(email);
+        if (existingUser)
+            return ResponseHandler.conflict(res, "User already exists");
 
-        const hashed = await bcrypt.hash(password, 10);
-        const newUser = await userRepository.create({ email, password: hashed });
+        // hash pass
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // create user
+        const newUser = await userRepository.create({
+            email,
+            password: hashedPassword,
+        });
+
+        // gen otp + token
         const otp = generateOTP(6);
-
         newUser.tokenVerification = generateToken({ id: newUser._id }, "15m");
+        newUser.expiresAt = new Date(Date.now() + 15 * 60 * 1000);
 
         await Promise.all([
             newUser.save(),
             redisClient.setex(`verify_${newUser._id}`, 900, otp),
-            sendMail(email, "Verify your email", `Your OTP: ${otp}`, otp)
+            sendMail(email, "Verify your email", `Your OTP: ${otp}`, otp),
         ]);
 
-        return { msg: "Registered successfully", userId: newUser._id };
+        return ResponseHandler.success(res, { userId: newUser._id }, "Registered successfully");
     }
 
     /* VERIFY EMAIL */
-    async verifyEmail(otp: string, email: string) {
+    async verifyEmail(otp: string, email: string, req: Request, res: Response) {
+        // user find
         const user = await userRepository.findByEmail(email);
-        if (!user) throw new Error("Invalid OTP or email");
+        if (!user) return ResponseHandler.badRequest(res, "Invalid OTP or email");
 
+        // otp check
         const storedOtp = await redisClient.get(`verify_${user._id}`);
-        if (!storedOtp || storedOtp !== otp) throw new Error("Invalid or expired OTP");
+        console.log(storedOtp, otp)
+        if (!storedOtp || storedOtp.toString() !== otp.toString()) {
+            return ResponseHandler.unauthorized(res, "Invalid or expired OTP");
+        }
 
+
+        // verify
         user.isVerified = true;
         user.tokenVerification = undefined;
 
         await Promise.all([
             user.save(),
-            redisClient.del(`verify_${user._id}`)
+            redisClient.del(`verify_${user._id}`),
         ]);
 
-        return { msg: "Email verified successfully" };
+        return ResponseHandler.success(res, {}, "Email verified successfully");
     }
 
     /* FORGOT PASSWORD */
-    async forgotPassword(email: string) {
+    async forgotPassword(email: string, req: Request, res: Response) {
+        // otp gen
         const otp = generateOTP(6);
 
         await Promise.all([
             redisClient.setex(`forgot_${email}`, 900, otp),
-            sendMail(email, "Reset Password", `Your OTP: ${otp}`, otp)
+            sendMail(email, "Reset Password", `Your OTP: ${otp}`, otp),
         ]);
 
-        return { msg: "OTP sent to email" };
-    }
-
-    /* LOGIN */
-    async loginUser({ email, password }: LoginInput) {
-        const user = await userRepository.findByEmail(email);
-        if (!user) throw new Error("Invalid credentials");
-
-        const match = await bcrypt.compare(password, user.password || "");
-        if (!match) throw new Error("Invalid credentials");
-
-        if (!user.isVerified) throw new Error("Email not verified");
-
-        const token = generateToken({ id: user._id }, "1h");
-
-        await redisClient.setex(`session_${user._id}`, 3600, token);
-
-        return { msg: "Login successful", token };
+        return ResponseHandler.success(res, {}, "OTP sent to email");
     }
 
     /* LOGOUT */
-    async logoutUser(token: string) {
-        // scan for the session containing the token
+    async logoutUser(token: string, req: Request, res: Response) {
+        // redis scan
         const keys = await redisClient.keys("session_*");
 
         for (const key of keys) {
-            const stored = await redisClient.get(key);
-            if (stored === token) {
+            const storedToken = await redisClient.get(key);
+
+            if (storedToken === token) {
                 await redisClient.del(key);
-                return { msg: "Logged out successfully" };
+
+                // cookie clear
+                res.clearCookie("accessToken");
+                res.clearCookie("refreshToken");
+
+                return ResponseHandler.success(res, {}, "Logged out successfully");
             }
         }
 
-        throw new Error("Session not found");
+        return ResponseHandler.notFound(res, "Session not found");
+    }
+
+    // me
+
+    async me(userId: string, req: Request, res: Response) {
+        try {
+            console.log(userId)
+            if (!userId)
+                return ResponseHandler.unauthorized(res, "Not authenticated");
+            const user = await userRepository.findById(userId);
+
+            if (!user)
+                return ResponseHandler.notFound(res, "User not found");
+
+            // remove sensitive fields manually
+            const safeUser = {
+                id: user._id,
+                email: user.email,
+                avatar: user.avatar,
+                isVerified: user.isVerified,
+                createdAt: user.createdAt,
+                updatedAt: user.updatedAt,
+            };
+
+            return ResponseHandler.success(res, safeUser, "User fetched");
+        } catch (err: any) {
+            return ResponseHandler.serverError(res, err.message);
+        }
     }
 }
 

@@ -2,6 +2,7 @@
 
 import express from "express";
 import AuthController from "../controllers/auth.controller";
+import { authAutoRotate } from "../middlewares/authAutoRotate";
 
 const router: express.Router = express.Router();
 
@@ -21,6 +22,8 @@ router.post("/login", AuthController.loginUser);
 
 // Logout user
 router.post("/logout", AuthController.logoutUser);
+
+router.get("/me", authAutoRotate, AuthController.me);
 
 export default router;
  

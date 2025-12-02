@@ -9,6 +9,9 @@
     "rootDir": "../../",
     "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo"
   },
+  "files": [
+    "src/types/express.d.ts"
+  ],
   "include": [
     "src/**/*.ts",
     "../generated/prisma/**/*.ts",

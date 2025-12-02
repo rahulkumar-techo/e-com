@@ -1,9 +1,17 @@
-/* AuthController: Handles all auth routes via service methods */
+/* AuthController: Handles auth routes */
 
 import { Request, Response } from "express";
-import { ResponseHandler } from "../../../../../packages/utils";
-import { registerParser, loginParser, verifyParser, forgotParser, logoutParser } from "../../validations/auth.validations";
-import authService from "../../services/auth.service";
+import {
+    registerParser,
+    loginParser,
+    verifyParser,
+    forgotParser,
+    logoutParser
+} from "../validations/auth.validations";
+
+import authService from "../services/auth.service";
+import { loginAuth } from "../services/login.service";
+import { ResponseHandler } from "../../../../packages/utils";
 
 class AuthController {
     constructor() {
@@ -12,15 +20,14 @@ class AuthController {
         this.forgotPassword = this.forgotPassword.bind(this);
         this.loginUser = this.loginUser.bind(this);
         this.logoutUser = this.logoutUser.bind(this);
+        this.me = this.me.bind(this);
     }
-
 
     /* REGISTER */
     async registerUser(req: Request, res: Response) {
         try {
             const { email, password } = registerParser.parse(req.body);
-            const data = await authService.registerUser({ email, password });
-            return ResponseHandler.success(res, data.userId, data.msg);
+            return await authService.registerUser({ email, password }, req, res);
         } catch (err: any) {
             return this.handleError(res, err, "Registration failed");
         }
@@ -30,8 +37,7 @@ class AuthController {
     async emailVerification(req: Request, res: Response) {
         try {
             const { otp, email } = verifyParser.parse(req.body);
-            const data = await authService.verifyEmail(otp, email);
-            return ResponseHandler.success(res, data.msg);
+            return await authService.verifyEmail(otp, email, req, res);
         } catch (err: any) {
             return this.handleError(res, err, "Email verification failed");
         }
@@ -41,21 +47,9 @@ class AuthController {
     async forgotPassword(req: Request, res: Response) {
         try {
             const { email } = forgotParser.parse(req.body);
-            const data = await authService.forgotPassword(email);
-            return ResponseHandler.success(res, data.msg);
+            return await authService.forgotPassword(email, req, res);
         } catch (err: any) {
             return this.handleError(res, err, "Forgot password failed");
-        }
-    }
-
-    /* LOGIN */
-    async loginUser(req: Request, res: Response) {
-        try {
-            const { email, password } = loginParser.parse(req.body);
-            const data = await authService.loginUser({ email, password });
-            return ResponseHandler.success(res, data.token, data.msg);
-        } catch (err: any) {
-            return this.handleError(res, err, "Login failed");
         }
     }
 
@@ -63,14 +57,30 @@ class AuthController {
     async logoutUser(req: Request, res: Response) {
         try {
             const { token } = logoutParser.parse(req.body);
-            const data = await authService.logoutUser(token);
-            return ResponseHandler.success(res, data.msg);
+            return await authService.logoutUser(token, req, res);
         } catch (err: any) {
             return this.handleError(res, err, "Logout failed");
         }
     }
 
-    /* Handle validation/server errors */
+    /* LOGIN */
+    async loginUser(req: Request, res: Response) {
+        try {
+            const { email, password } = loginParser.parse(req.body);
+            return await loginAuth.login({ email, password }, req, res);
+        } catch (err: any) {
+            return this.handleError(res, err, "Login failed");
+        }
+    }
+    async me(req: Request, res: Response) {
+        try {
+            return await authService.me((req as any)?.user?.id, req, res);
+        } catch (err: any) {
+            return this.handleError(res, err, "Login failed");
+        }
+    }
+
+    /* ERROR HANDLER */
     private handleError(res: Response, err: any, fallbackMsg: string) {
         if (err.name === "ZodError")
             return ResponseHandler.badRequest(res, err.errors[0].message);
