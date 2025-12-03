@@ -138,7 +138,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"rahulkumar@gmail.com\",\r\n    \"otp\": \"063187\"\r\n}",
+							"raw": "{\r\n    \"email\": \"rahulkumar@gmail.com\",\r\n    \"otp\": \"340937\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -612,6 +612,18 @@
 							]
 						},
 						"description": "## Purpose\nThis endpoint allows users to reset their password using a one-time password (OTP) that was sent to their registered email address. This is part of the password recovery flow when users have forgotten their credentials.\n\n## Request Details\n\n### Endpoint\n`POST /api/auth/reset-password`\n\n### Request Body (JSON)\nThe request requires the following fields:\n\n| Field | Type | Required | Description |\n|-------|------|----------|-------------|\n| `email` | string | Yes | The user's registered email address |\n| `otp` | string | Yes | The one-time password sent to the user's email |\n| `password` | string | Yes | The new password the user wants to set |\n\n### Example Request Body\n```json\n{\n  \"email\": \"rahulkumar@gmail.com\",\n  \"otp\": \"562373\",\n  \"password\": \"rahulkumar\"\n}\n```\n\n## Success Response\n\n### Status Code: 200 OK\nIndicates that the password has been successfully reset.\n\n**Response Body:**\n```json\n{\n  \"status\": \"success\",\n  \"message\": \"Password changed\",\n  \"data\": {}\n}\n```\n\n## Usage Notes\n\n1. **Password Reset Flow**: This endpoint is typically the final step in a multi-step password reset process:\n   - User requests password reset (forgot password endpoint)\n   - System sends OTP to user's email\n   - User submits email, OTP, and new password to this endpoint\n\n2. **OTP Validation**: The OTP must be valid and not expired. Invalid or expired OTPs will result in an error.\n\n3. **Email Verification**: The email address must match the one associated with the OTP.\n\n4. **Password Requirements**: Ensure the new password meets any password policy requirements enforced by the system (length, complexity, etc.).\n\n5. **Security**: After successful password reset, the user should log in with their new credentials using the login endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "Change avatar",
+					"id": "29442200-63a5fb97-868a-49ca-8dc5-28f0f743e821",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
