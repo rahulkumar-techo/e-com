@@ -626,7 +626,14 @@
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": []
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"uuid": "0802618f-c971-4ca5-bbb8-6e600ac03b56",
+									"src": "/D:/Downloads/ChatGPT Image Nov 24, 2025, 08_34_44 AM.png"
+								}
+							]
 						},
 						"url": {
 							"raw": "http://localhost:5001/api/auth/avatar",
@@ -640,7 +647,8 @@
 								"auth",
 								"avatar"
 							]
-						}
+						},
+						"description": "# Update User Avatar\n\n## Overview\nThis endpoint allows authenticated users to update their profile avatar by uploading a new image file.\n\n## Endpoint Details\n- **Method:** `PUT`\n- **URL:** `http://localhost:5001/api/auth/avatar`\n- **Content-Type:** `multipart/form-data`\n\n## Authentication\nThis endpoint requires user authentication. Ensure you include valid authentication credentials (token/session) in your request headers.\n\n## Request Body\nThe request accepts multipart/form-data with the following parameter:\n\n| Parameter | Type | Required | Description |\n|-----------|------|----------|-------------|\n| `avatar` | File | Yes | Image file for the user's avatar (e.g., JPG, PNG) |\n\n## Success Response\n**Status Code:** `200 OK`\n\n**Response Body:**\n```json\n{\n  \"status\": \"success\",\n  \"message\": \"Avatar updated successfully\",\n  \"data\": {\n    \"avatar\": \"https://res.cloudinary.com/dwf64uoxh/image/upload/...\"\n  }\n}\n```\n\n## Response Fields\n- `status`: Indicates the operation status (\"success\")\n- `message`: Human-readable success message\n- `data.avatar`: URL of the uploaded avatar image (hosted on Cloudinary)\n\n## Notes\n- The uploaded image is stored on Cloudinary CDN\n- Ensure the file is a valid image format\n- Consider file size limitations for optimal performance\n- The avatar URL returned can be used to display the user's profile picture"
 					},
 					"response": []
 				}
