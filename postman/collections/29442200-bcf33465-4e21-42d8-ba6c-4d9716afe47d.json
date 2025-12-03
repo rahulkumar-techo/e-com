@@ -623,7 +623,24 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"rahulkumar@gmail.com\",\r\n    \"password\": \"rahul@9142\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/auth/avatar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"avatar"
+							]
+						}
 					},
 					"response": []
 				}
