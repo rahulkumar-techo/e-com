@@ -625,8 +625,8 @@
 						"method": "PUT",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"rahulkumar@gmail.com\",\r\n    \"password\": \"rahul@9142\"\r\n}"
+							"mode": "formdata",
+							"formdata": []
 						},
 						"url": {
 							"raw": "http://localhost:5001/api/auth/avatar",
